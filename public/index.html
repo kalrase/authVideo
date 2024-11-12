@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Player</title>
+</head>
+<body>
+  
+  <video width="640" height="360" id="videoSource"  controls></video>
+
+  <script>
+    async function getVideoLink() {
+      const response = await fetch('http://localhost:3000/get-video-link');
+      const data = await response.json();
+      document.querySelector('#videoSource').src = data.videoUrl;
+      // window.document.querySelector('#videoSource').reload()
+    }
+    getVideoLink();
+  </script>
+</body>
+</html>
